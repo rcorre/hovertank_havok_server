@@ -27,7 +27,7 @@ func (d *db) Init() error {
 	_, err := d.Exec(
 		"CREATE TABLE IF NOT EXISTS records(" +
 			"name varchar NOT NULL," +
-			"score integer NOT NULL," +
+			"score integer NOT NULL" +
 			")",
 	)
 	return err
