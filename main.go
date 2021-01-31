@@ -72,8 +72,8 @@ type v1API struct {
 }
 
 type record struct {
-	Name  string
-	Score int
+	Name  string `json:"name"`
+	Score int    `json:"score"`
 }
 
 func unmarshal(r io.Reader, out interface{}) error {
