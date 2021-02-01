@@ -116,7 +116,7 @@ func (v1 *v1API) postRecord(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if entry.Name == "" || entry.Score <= 0 {
-		log.Println("Missing time or level")
+		log.Println("Missing time or score")
 		http.Error(w, "", http.StatusBadRequest)
 		return
 	}
