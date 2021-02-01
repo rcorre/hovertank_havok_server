@@ -11,6 +11,7 @@ import (
 	"os"
 
 	_ "github.com/lib/pq"
+	"github.com/rs/cors"
 )
 
 type DB interface {
@@ -130,7 +131,7 @@ func (v1 *v1API) postRecord(w http.ResponseWriter, r *http.Request) {
 	log.Println("POST record ok", entry.Name, entry.Score)
 }
 
-func newMux(db DB) *http.ServeMux {
+func newMux(db DB) http.Handler {
 	mux := http.NewServeMux()
 	v1 := &v1API{db: db}
 
@@ -144,7 +145,7 @@ func newMux(db DB) *http.ServeMux {
 		}
 	})
 
-	return mux
+	return cors.Default().Handler(mux)
 }
 
 func main() {
